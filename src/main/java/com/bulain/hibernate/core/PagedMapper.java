@@ -1,4 +1,4 @@
-package com.bulain.hibernate.common;
+package com.bulain.hibernate.core;
 
 import java.util.List;
 

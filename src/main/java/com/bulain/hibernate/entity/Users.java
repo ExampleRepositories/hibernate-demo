@@ -1,4 +1,4 @@
-package com.bulain.hibernate.pojo;
+package com.bulain.hibernate.entity;
 // Generated 2011-10-18 22:26:13 by Hibernate Tools 3.2.2.GA
 
 import java.util.Date;

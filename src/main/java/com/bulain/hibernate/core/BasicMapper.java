@@ -1,4 +1,4 @@
-package com.bulain.hibernate.common;
+package com.bulain.hibernate.core;
 
 public interface BasicMapper<T> {
     int deleteByPrimaryKey(Integer id);

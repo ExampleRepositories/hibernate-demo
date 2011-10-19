@@ -1,13 +1,22 @@
-package com.bulain.hibernate.common;
+package com.bulain.hibernate.core;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-public abstract class BasicMapperImpl<T> extends HibernateDaoSupport implements BasicMapper<T> {
+import com.bulain.hibernate.util.ReflectionUtils;
 
-    protected abstract Class<T> getEntityClass();
+public class BasicMapperImpl<T> extends HibernateDaoSupport implements BasicMapper<T> {
+
+    protected Class<T> entityClass;
+
+    public BasicMapperImpl(){
+        this.entityClass = ReflectionUtils.getSuperClassGenricType(getClass());
+    }
+    
+    public BasicMapperImpl(Class<T> clazz){
+        this.entityClass = clazz;
+    }
 
     public int deleteByPrimaryKey(Integer id) {
-        Class<T> entityClass = getEntityClass();
         T entity = (T) getHibernateTemplate().load(entityClass, id);
         getHibernateTemplate().delete(entity);
         return 1;
@@ -19,7 +28,6 @@ public abstract class BasicMapperImpl<T> extends HibernateDaoSupport implements 
     }
 
     public T selectByPrimaryKey(Integer id) {
-        Class<T> entityClass = getEntityClass();
         T object = (T) getHibernateTemplate().get(entityClass, id);
         return object;
     }

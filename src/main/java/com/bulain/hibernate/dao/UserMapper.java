@@ -1,7 +1,7 @@
 package com.bulain.hibernate.dao;
 
-import com.bulain.hibernate.common.PagedMapper;
-import com.bulain.hibernate.pojo.Users;
+import com.bulain.hibernate.core.PagedMapper;
+import com.bulain.hibernate.entity.Users;
 
 public interface UserMapper extends PagedMapper<Users, Users> {
 

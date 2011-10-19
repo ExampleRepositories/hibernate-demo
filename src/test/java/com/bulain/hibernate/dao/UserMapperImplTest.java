@@ -13,7 +13,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bulain.hibernate.pojo.Users;
+import com.bulain.hibernate.entity.Users;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners(value = {DependencyInjectionTestExecutionListener.class,

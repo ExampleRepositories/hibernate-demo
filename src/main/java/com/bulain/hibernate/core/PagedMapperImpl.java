@@ -2,26 +2,43 @@ package com.bulain.hibernate.core;
 
 import java.util.List;
 
-public class PagedMapperImpl<S, T> extends BasicMapperImpl<T> implements PagedMapper<S, T> {
+import org.hibernate.Query;
+import org.springframework.util.ClassUtils;
 
-    public PagedMapperImpl(){
+import com.bulain.common.page.Search;
+
+@SuppressWarnings("unchecked")
+public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> implements PagedMapper<T, S> {
+
+    public PagedMapperImpl() {
         super();
     }
-    
-    public PagedMapperImpl(Class<T> clazz){
-        this.entityClass = clazz;
+
+    public PagedMapperImpl(Class<T> clazz) {
+        super(clazz);
     }
-    
+
     public List<T> find(S search) {
-        return null;
+        String shortName = ClassUtils.getShortName(entityClass);
+        Query namedQuery = getSession().getNamedQuery(String.format("%s_%s", shortName, "find"));
+        namedQuery.setProperties(search);
+        return namedQuery.list();
     }
 
     public Long count(S search) {
-        return null;
+        String shortName = ClassUtils.getShortName(entityClass);
+        Query namedQuery = getSession().getNamedQuery(String.format("%s_%s", shortName, "count"));
+        namedQuery.setProperties(search);
+        return (Long) namedQuery.uniqueResult();
     }
 
     public List<T> page(S search) {
-        return null;
+        String shortName = ClassUtils.getShortName(entityClass);
+        Query namedQuery = getSession().getNamedQuery(String.format("%s_%s", shortName, "find"));
+        namedQuery.setFirstResult((int) search.getLow());
+        namedQuery.setMaxResults((int) search.getHigh());
+        namedQuery.setProperties(search);
+        return namedQuery.list();
     }
 
 }

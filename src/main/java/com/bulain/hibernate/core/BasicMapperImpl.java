@@ -17,24 +17,23 @@ public class BasicMapperImpl<T> extends HibernateDaoSupport implements BasicMapp
     }
 
     public int deleteByPrimaryKey(Integer id) {
-        T entity = (T) getHibernateTemplate().load(entityClass, id);
-        getHibernateTemplate().delete(entity);
+        Object entity = getSession().load(entityClass, id);
+        getSession().delete(entity);
         return 1;
     }
 
     public int insert(T record) {
-        getHibernateTemplate().save(record);
+        getSession().save(record);
         return 1;
     }
 
+    @SuppressWarnings("unchecked")
     public T selectByPrimaryKey(Integer id) {
-        T object = (T) getHibernateTemplate().get(entityClass, id);
-        return object;
+        return (T) getSession().get(entityClass, id);
     }
 
     public int updateByPrimaryKey(T record) {
-        getHibernateTemplate().update(record);
+        getSession().update(record);
         return 1;
     }
-
 }

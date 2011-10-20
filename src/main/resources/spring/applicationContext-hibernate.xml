@@ -5,7 +5,7 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mappingResources">
 			<list>
-				<value>hbm/Users.hbm.xml</value>
+				<value>hbm/User.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

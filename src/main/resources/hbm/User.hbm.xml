@@ -27,4 +27,10 @@
             <column name="updated_at" length="19" />
         </property>
     </class>
+    <query name="User_find">
+        <![CDATA[from User u where u.firstName = :firstName and u.lastName = :lastName]]>
+    </query>
+    <query name="User_count">
+        <![CDATA[select count(*) from User u where u.firstName = :firstName and u.lastName = :lastName]]>
+    </query>
 </hibernate-mapping>

@@ -2,10 +2,13 @@ package com.bulain.hibernate.core;
 
 import java.util.List;
 
-import com.bulain.common.page.Search;
+import org.hibernate.criterion.DetachedCriteria;
 
-public interface PagedMapper<T, S extends Search> extends BasicMapper<T> {
-    List<T> find(S search);
-    Long count(S search);
-    List<T> page(S search);
+import com.bulain.common.page.OrderBy;
+import com.bulain.common.page.Page;
+
+public interface PagedMapper<T> extends BasicMapper<T> {
+    List<T> find(DetachedCriteria dc, OrderBy orderBy);
+    Long count(DetachedCriteria dc);
+    List<T> page(DetachedCriteria dc, Page page, OrderBy orderBy);
 }

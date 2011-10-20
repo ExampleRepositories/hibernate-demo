@@ -17,7 +17,7 @@ public class BasicMapperImpl<T> extends HibernateDaoSupport implements BasicMapp
     }
 
     public int deleteByPrimaryKey(Integer id) {
-        Object entity = getSession().load(entityClass, id);
+        Object entity = getSession().get(entityClass, id);
         getSession().delete(entity);
         return 1;
     }

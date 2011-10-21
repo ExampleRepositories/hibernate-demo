@@ -6,6 +6,10 @@
         <property name="mappingResources">
             <list>
                 <value>hbm/User.hbm.xml</value>
+                <value>hbm/Group.hbm.xml</value>
+                <value>hbm/Permission.hbm.xml</value>
+                <value>hbm/GroupUser.hbm.xml</value>
+                <value>hbm/GroupPermission.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">

@@ -162,8 +162,8 @@
                     </components>
                     <componentProperties>
                         <packagename>com.bulain.hibernate.entity</packagename>
-                        <!-- 
                         <jdk5>true</jdk5>
+                        <!-- 
                         <ejb3>true</ejb3>
                          -->
                     </componentProperties>

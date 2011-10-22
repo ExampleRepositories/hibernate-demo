@@ -19,6 +19,9 @@ If you want to run:
 1, checkout out parent and run: 
     git clone git@github.com:bulain/parent.git
     mvn install
-2, checkout out hibernate-demo:
+2, checkout out common and run: 
+    git clone git@github.com:bulain/common.git
+    mvn install
+3, checkout out hibernate-demo:
     git clone git@github.com:bulain/hibernate-demo.git
     mvn eclipse:eclipse

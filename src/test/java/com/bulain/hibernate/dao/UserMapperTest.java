@@ -69,8 +69,7 @@ public class UserMapperTest extends ServiceTestCase {
 
     @Test
     public void testUpdateByPrimaryKey() {
-        User record = new User();
-        record.setId(Integer.valueOf(104));
+        User record = userMapper.selectByPrimaryKey(104);
         record.setFirstName("firstName-updated");
         record.setLastName("lastName-updated");
         int updateByPrimaryKey = userMapper.updateByPrimaryKey(record);

@@ -13,14 +13,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.bulain.common.dataset.DataSet;
 import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.test.ServiceTestCase;
+import com.bulain.hibernate.entity.Group;
 import com.bulain.hibernate.entity.GroupUser;
+import com.bulain.hibernate.entity.User;
 
-@SeedDataSet(file="test-data/init_seed_dataset.xml")
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_group_users.xml")
 public class GroupUserMapperTest extends ServiceTestCase {
     @Autowired
     private GroupUserMapper groupUserMapper;
-    
+    @Autowired
+    private UserMapper userMapper;
+    @Autowired
+    private GroupMapper groupMapper;
+
     @Autowired
     private SessionFactory sessionFactory;
     private Session session;
@@ -44,6 +50,10 @@ public class GroupUserMapperTest extends ServiceTestCase {
     @Test
     public void testInsert() {
         GroupUser record = new GroupUser();
+        User user = userMapper.selectByPrimaryKey(105);
+        record.setUser(user);
+        Group group = groupMapper.selectByPrimaryKey(105);
+        record.setGroup(group);
         int insert = groupUserMapper.insert(record);
         assertEquals(1, insert);
     }
@@ -52,12 +62,16 @@ public class GroupUserMapperTest extends ServiceTestCase {
     public void testSelectByPrimaryKey() {
         GroupUser select = groupUserMapper.selectByPrimaryKey(Integer.valueOf(102));
         assertNotNull(select);
+        assertEquals("first_name_102", select.getUser().getFirstName());
+        assertEquals("last_name_102", select.getUser().getLastName());
+        assertEquals("name_102", select.getGroup().getName());
     }
 
     @Test
     public void testUpdateByPrimaryKey() {
-        GroupUser record = new GroupUser();
-        record.setId(Integer.valueOf(104));
+        GroupUser record = groupUserMapper.selectByPrimaryKey(104);
+        Group group = groupMapper.selectByPrimaryKey(105);
+        record.setGroup(group);
         int updateByPrimaryKey = groupUserMapper.updateByPrimaryKey(record);
         assertEquals(1, updateByPrimaryKey);
     }

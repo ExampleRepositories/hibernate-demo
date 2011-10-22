@@ -56,8 +56,7 @@ public class GroupPermissionMapperTest extends ServiceTestCase {
 
     @Test
     public void testUpdateByPrimaryKey() {
-        GroupPermission record = new GroupPermission();
-        record.setId(Integer.valueOf(103));
+        GroupPermission record = groupPermissionMapper.selectByPrimaryKey(103);
         record.setPermission("permission-updated");
         int updateByPrimaryKey = groupPermissionMapper.updateByPrimaryKey(record);
         assertEquals(1, updateByPrimaryKey);

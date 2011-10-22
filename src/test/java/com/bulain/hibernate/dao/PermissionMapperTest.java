@@ -66,8 +66,7 @@ public class PermissionMapperTest extends ServiceTestCase {
 
     @Test
     public void testUpdateByPrimaryKey() {
-        Permission record = new Permission();
-        record.setId(Integer.valueOf(104));
+        Permission record = permissionMapper.selectByPrimaryKey(104);
         record.setPermission("permission-updated");
         int updateByPrimaryKey = permissionMapper.updateByPrimaryKey(record);
         assertEquals(1, updateByPrimaryKey);

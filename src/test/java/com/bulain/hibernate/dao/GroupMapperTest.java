@@ -65,8 +65,7 @@ public class GroupMapperTest extends ServiceTestCase {
 
     @Test
     public void testUpdateByPrimaryKey() {
-        Group record = new Group();
-        record.setId(Integer.valueOf(103));
+        Group record = groupMapper.selectByPrimaryKey(103);
         record.setName("name");
         record.setNote("note");
         int updateByPrimaryKey = groupMapper.updateByPrimaryKey(record);

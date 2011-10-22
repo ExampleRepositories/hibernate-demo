@@ -36,6 +36,7 @@ public class UserMapperTest extends HibernateTestCase {
         record.setLastName("lastName");
         int insert = userMapper.insert(record);
         assertEquals(1, insert);
+        assertNotNull(record.getId());
     }
 
     @Test
@@ -67,7 +68,7 @@ public class UserMapperTest extends HibernateTestCase {
         OrderBy orderBy = new OrderBy();
         orderBy.setOrderBy("firstName");
         orderBy.setSequance("asc");
-        
+
         List<User> find = userMapper.find(dc, orderBy);
         assertEquals(3, find.size());
     }
@@ -77,10 +78,10 @@ public class UserMapperTest extends HibernateTestCase {
         UserSearch search = new UserSearch();
         search.setFirstName("first_name_page");
         search.setLastName("last_name_page");
-        
+
         Example example = Example.create(search);
         DetachedCriteria dc = DetachedCriteria.forClass(User.class).add(example);
-        
+
         Long count = userMapper.count(dc);
         assertEquals(Long.valueOf(3), count);
     }
@@ -90,14 +91,14 @@ public class UserMapperTest extends HibernateTestCase {
         UserSearch search = new UserSearch();
         search.setFirstName("first_name_page");
         search.setLastName("last_name_page");
-        
+
         Example example = Example.create(search);
         DetachedCriteria dc = DetachedCriteria.forClass(User.class).add(example);
         Page page = new Page();
         OrderBy orderBy = new OrderBy();
         orderBy.setOrderBy("firstName");
         orderBy.setSequance("asc");
-        
+
         List<User> listUser = userMapper.page(dc, page, orderBy);
         assertEquals(3, listUser.size());
     }

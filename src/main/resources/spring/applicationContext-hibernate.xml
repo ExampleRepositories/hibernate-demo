@@ -5,11 +5,11 @@
         <property name="dataSource" ref="dataSource" />
         <property name="mappingResources">
             <list>
-                <value>hbm/User.hbm.xml</value>
-                <value>hbm/Group.hbm.xml</value>
-                <value>hbm/Permission.hbm.xml</value>
-                <value>hbm/GroupUser.hbm.xml</value>
-                <value>hbm/GroupPermission.hbm.xml</value>
+                <value>hbm/Users.hbm.xml</value>
+                <value>hbm/Groups.hbm.xml</value>
+                <value>hbm/Permissions.hbm.xml</value>
+                <value>hbm/GroupUsers.hbm.xml</value>
+                <value>hbm/GroupPermissions.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">

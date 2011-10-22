@@ -10,8 +10,8 @@ create table group_users(
 	updated_by varchar(20),
 	updated_at datetime,
 	PRIMARY KEY  (id),
-	FOREIGN KEY (group_id) REFERENCES groups(id)
---	FOREIGN KEY (user_id) REFERENCES users(id)
+	FOREIGN KEY (group_id) REFERENCES groups(id),
+	FOREIGN KEY (user_id) REFERENCES users(id)
 )ENGINE=InnoDB default charset=utf8;
 
 --//@UNDO

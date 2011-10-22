@@ -8,12 +8,12 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="groups" class="com.bulain.hibernate.entity.Group" fetch="select">
+        <many-to-one name="user" class="com.bulain.hibernate.entity.User" fetch="select">
+            <column name="user_id" />
+        </many-to-one>
+        <many-to-one name="group" class="com.bulain.hibernate.entity.Group" fetch="select">
             <column name="group_id" />
         </many-to-one>
-        <property name="userId" type="java.lang.Integer">
-            <column name="user_id" />
-        </property>
         <property name="createdBy" type="string">
             <column name="created_by" length="20" />
         </property>

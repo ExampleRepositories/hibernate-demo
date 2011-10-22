@@ -9,10 +9,10 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_test</property>
         <property name="hibernate.connection.username">hibernate</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
-        <mapping resource="hbm/GroupUser.hbm.xml" />
-        <mapping resource="hbm/Group.hbm.xml" />
-        <mapping resource="hbm/User.hbm.xml" />
-        <mapping resource="hbm/Permission.hbm.xml" />
-        <mapping resource="hbm/GroupPermission.hbm.xml" />
+        <mapping resource="hbm/GroupUsers.hbm.xml" />
+        <mapping resource="hbm/Groups.hbm.xml" />
+        <mapping resource="hbm/Users.hbm.xml" />
+        <mapping resource="hbm/Permissions.hbm.xml" />
+        <mapping resource="hbm/GroupPermissions.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

@@ -5,43 +5,23 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.DataSet;
-import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
-import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.Permission;
 import com.bulain.hibernate.pojo.PermissionSearch;
+import com.bulain.hibernate.test.HibernateTestCase;
 
-@SeedDataSet(file="test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_permissions.xml")
-public class PermissionMapperTest extends ServiceTestCase {
+public class PermissionMapperTest extends HibernateTestCase {
     @Autowired
     private PermissionMapper permissionMapper;
 
-    @Autowired
-    private SessionFactory sessionFactory;
-    private Session session;
-
-    @Before
-    public void setUp() {
-        session = sessionFactory.getCurrentSession();
-    }
-
-    @After
-    public void tearDown() {
-        session.flush();
-    }
-    
     @Test
     public void testDeleteByPrimaryKey() {
         int deleteByPrimaryKey = permissionMapper.deleteByPrimaryKey(Integer.valueOf(101));

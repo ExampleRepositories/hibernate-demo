@@ -4,43 +4,23 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Example;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.DataSet;
-import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
-import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.Group;
 import com.bulain.hibernate.pojo.GroupSearch;
+import com.bulain.hibernate.test.HibernateTestCase;
 
-@SeedDataSet(file="test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_groups.xml")
-public class GroupMapperTest extends ServiceTestCase {
+public class GroupMapperTest extends HibernateTestCase {
     @Autowired
     private GroupMapper groupMapper;
 
-    @Autowired
-    private SessionFactory sessionFactory;
-    private Session session;
-
-    @Before
-    public void setUp() {
-        session = sessionFactory.getCurrentSession();
-    }
-
-    @After
-    public void tearDown() {
-        session.flush();
-    }
-    
     @Test
     public void testDeleteByPrimaryKey() {
         int deleteByPrimaryKey = groupMapper.deleteByPrimaryKey(Integer.valueOf(101));

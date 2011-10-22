@@ -1,34 +1,21 @@
-package com.bulain.hibernate.dao;
+package com.bulain.hibernate.demo;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.MatchMode;
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.DataSet;
-import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.User;
+import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
 @DataSet(file = "test-data/init_users.xml")
-public class ExampleTest extends ServiceTestCase {
-
-    @Autowired
-    private SessionFactory sessionFactory;
-    private Session session;
-
-    @Before
-    public void setUp() {
-        session = sessionFactory.getCurrentSession();
-    }
+public class ExampleTest extends HibernateTestCase {
 
     @Test
     public void testExample() {

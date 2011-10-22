@@ -15,12 +15,14 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.User;
 import com.bulain.hibernate.pojo.UserSearch;
 
+@SeedDataSet(file="test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_users.xml")
 public class UserMapperTest extends ServiceTestCase {
 

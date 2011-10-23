@@ -12,7 +12,7 @@ import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
 @DataSet(file = "test-data/init_users.xml")
-public class NativeQueryTest extends HibernateTestCase {
+public class NativeNamedQueryTest extends HibernateTestCase {
 
     @Test
     public void testNativeQueryFind() {

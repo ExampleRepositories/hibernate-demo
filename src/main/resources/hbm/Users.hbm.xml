@@ -28,9 +28,16 @@
         </property>
     </class>
     <query name="User_find">
-        <![CDATA[from User u where u.firstName = :firstName and u.lastName = :lastName]]>
+        <![CDATA[from User u where u.firstName = :firstName and u.lastName = :lastName order by u.firstName]]>
     </query>
     <query name="User_count">
         <![CDATA[select count(*) from User u where u.firstName = :firstName and u.lastName = :lastName]]>
     </query>
+    <sql-query name="User_native_find">
+        <![CDATA[select * from users where first_name = :firstName and last_name = :lastName order by first_name]]>
+        <return class="com.bulain.hibernate.entity.User"/>
+    </sql-query>
+    <sql-query name="User_native_count">
+        <![CDATA[select count(*) from users where first_name = :firstName and last_name = :lastName]]>
+    </sql-query>
 </hibernate-mapping>

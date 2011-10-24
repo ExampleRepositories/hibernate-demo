@@ -5,4 +5,5 @@
   <permissions />
   <group_users />
   <group_permissions />
+  <persons />
 </dataset>

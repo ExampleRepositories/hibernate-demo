@@ -14,5 +14,6 @@
         <mapping resource="hbm/Users.hbm.xml" />
         <mapping resource="hbm/Permissions.hbm.xml" />
         <mapping resource="hbm/GroupPermissions.hbm.xml" />
+        <mapping resource="hbm/Persons.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

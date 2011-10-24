@@ -8,11 +8,11 @@ Task to do:
 5, XML configuration and Annotation configuration.
 6, Execute native SQL.*
 7, Make all HQL/SQL is not in java code.*
-8, Research Tool, DB==>POJO,XML, XML==>DB,POJO.
+8, Research Tool, DB==>POJO,XML, XML==>DB,POJO.*
 9, Criteria.*
 10, Example.*
 11, Dynamic HQL.
-12, FetchMode: DEFAULT, JOIN, SELECT.
+12, FetchMode: DEFAULT, JOIN, SELECT.*
 13, MatchMode: EXACT, START, END, ANYWHERE.*
 
 If you want to run:

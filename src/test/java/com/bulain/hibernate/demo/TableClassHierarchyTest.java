@@ -15,16 +15,9 @@ public class TableClassHierarchyTest extends HibernateTestCase {
 
     @Test
     public void testTableClassHierarchy() {
-        Vehicle vechicle = new Vehicle();
-        vechicle.setName("vechicle");
-
-        Car car = new Car();
-        car.setName("car");
-        car.setCarInfo("carInfo");
-
-        Bike bike = new Bike();
-        bike.setName("bike");
-        bike.setBikeInfo("bikeInfo");
+        Vehicle vechicle = new Vehicle("vechicle");
+        Car car = new Car("car", "carInfo");
+        Bike bike = new Bike("bike", "bikeInfo");
 
         session.save(vechicle);
         session.save(car);

@@ -16,13 +16,8 @@ public class TableConcreteClassTest extends HibernateTestCase {
 
     @Test
     public void testTableConcreteClass() {
-        TelPhone telPhone = new TelPhone();
-        telPhone.setName("telPhone");
-        telPhone.setTelInfo("telInfo");
-
-        CellPhone cellPhone = new CellPhone();
-        cellPhone.setName("cellPhone");
-        cellPhone.setCellInfo("cellInfo");
+        TelPhone telPhone = new TelPhone("telPhone", "telInfo");
+        CellPhone cellPhone = new CellPhone("cellPhone", "cellInfo");
 
         session.save(telPhone);
         session.save(cellPhone);

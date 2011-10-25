@@ -3,7 +3,7 @@ This is a hibernate example, will use next technology: hibernate, spring
 Task to do:
 1, Basic CURD, for one table.*
 2, POJO relationship: one-to-one, one-to-many, many-to-one, many-to-many.
-3, Inherited relationship, table/class hierarchy, table/subclass, table/concrete class.
+3, Inherited relationship, table/class hierarchy, table/subclass, table/concrete class.*
 4, First level cache, second level cache.
 5, XML configuration and Annotation configuration.*
 6, Execute native SQL.*

@@ -15,5 +15,9 @@
         <mapping resource="hbm/Permissions.hbm.xml" />
         <mapping resource="hbm/GroupPermissions.hbm.xml" />
         <mapping resource="hbm/Persons.hbm.xml" />
+        <mapping resource="hbm/TableClassHierarchy.hbm.xml" />
+        <mapping resource="hbm/TableSubclass.hbm.xml" />
+        <mapping resource="hbm/TableSubclassDiscriminator.hbm.xml" />
+        <mapping resource="hbm/TableConcreteClass.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

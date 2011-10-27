@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.DataSet;
 import com.bulain.common.page.OrderBy;
+import com.bulain.hibernate.dao.GroupMapper;
 import com.bulain.hibernate.entity.Group;
 import com.bulain.hibernate.pojo.GroupSearch;
 import com.bulain.hibernate.test.HibernateTestCase;

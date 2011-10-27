@@ -4,42 +4,70 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.FetchMode;
+import org.hibernate.Hibernate;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Order;
 import org.junit.Test;
 
 import com.bulain.common.dataset.DataSet;
-import com.bulain.hibernate.entity.User;
+import com.bulain.hibernate.entity.Group;
+import com.bulain.hibernate.pojo.GroupSearch;
 import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
-@DataSet(file = "test-data/init_users.xml")
+@DataSet(file = "test-data/init_groups.xml")
 public class FetchModeTest extends HibernateTestCase {
+
     @Test
-    public void testFetchModeStart() {
-        List<User> list = session.createCriteria(User.class)
-                .add(Restrictions.like("firstName", "first_name", MatchMode.START).ignoreCase()).list();
-        assertEquals(7, list.size());
+    public void testFetchModeDefault() {
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+
+        Example example = Example.create(search);
+        DetachedCriteria dc = DetachedCriteria.forClass(Group.class).setFetchMode("groupUserses", FetchMode.DEFAULT)
+                .add(example);
+
+        List<Group> find = dc.getExecutableCriteria(session).addOrder(Order.asc("name")).list();
+        for (Group grp : find) {
+            Hibernate.initialize(grp.getGroupPermissionses());
+            Hibernate.initialize(grp.getGroupUserses());
+        }
+        assertEquals(3, find.size());
     }
-    
+
     @Test
-    public void testFetchModeAnywhere() {
-        List<User> list = session.createCriteria(User.class)
-                .add(Restrictions.like("firstName", "first_name", MatchMode.ANYWHERE).ignoreCase()).list();
-        assertEquals(7, list.size());
+    public void testFetchModeJoin() {
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+
+        Example example = Example.create(search);
+        DetachedCriteria dc = DetachedCriteria.forClass(Group.class).setFetchMode("groupUserses", FetchMode.JOIN)
+                .add(example);
+
+        List<Group> find = dc.getExecutableCriteria(session).addOrder(Order.asc("name")).list();
+        for (Group grp : find) {
+            Hibernate.initialize(grp.getGroupPermissionses());
+            Hibernate.initialize(grp.getGroupUserses());
+        }
+        assertEquals(3, find.size());
     }
-    
+
     @Test
-    public void testFetchModeEnd() {
-        List<User> list = session.createCriteria(User.class)
-                .add(Restrictions.like("firstName", "page", MatchMode.END)).list();
-        assertEquals(3, list.size());
-    }
-    
-    @Test
-    public void testFetchModeExact() {
-        List<User> list = session.createCriteria(User.class)
-                .add(Restrictions.like("firstName", "first_name_page", MatchMode.EXACT)).list();
-        assertEquals(3, list.size());
+    public void testFetchModeSelect() {
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+
+        Example example = Example.create(search);
+        DetachedCriteria dc = DetachedCriteria.forClass(Group.class).setFetchMode("groupUserses", FetchMode.SELECT)
+                .add(example);
+
+        List<Group> find = dc.getExecutableCriteria(session).addOrder(Order.asc("name")).list();
+        for (Group grp : find) {
+            Hibernate.initialize(grp.getGroupPermissionses());
+            Hibernate.initialize(grp.getGroupUserses());
+        }
+        assertEquals(3, find.size());
     }
 }

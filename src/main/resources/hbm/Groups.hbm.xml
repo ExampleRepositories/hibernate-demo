@@ -26,7 +26,7 @@
         <property name="updatedAt" type="timestamp">
             <column name="updated_at" length="19" />
         </property>
-        <set name="groupUserses" inverse="true">
+        <set name="groupUserses" inverse="true" cascade="delete">
             <key>
                 <column name="group_id" />
             </key>

@@ -8,10 +8,10 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="user" class="com.bulain.hibernate.entity.User" fetch="select">
+        <many-to-one name="user" class="com.bulain.hibernate.entity.User" fetch="select" cascade="save-update">
             <column name="user_id" />
         </many-to-one>
-        <many-to-one name="group" class="com.bulain.hibernate.entity.Group" fetch="select">
+        <many-to-one name="group" class="com.bulain.hibernate.entity.Group" fetch="select" cascade="save-update">
             <column name="group_id" />
         </many-to-one>
         <property name="createdBy" type="string">

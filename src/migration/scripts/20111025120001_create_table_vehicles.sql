@@ -7,7 +7,7 @@ create table vehicles (
     car_info varchar(20), 
     bike_info varchar(20), 
     primary key (ID)
-) type=InnoDB;
+)ENGINE=InnoDB default charset=utf8;
 
 
 --//@UNDO

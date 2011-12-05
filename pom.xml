@@ -28,6 +28,7 @@
         <hibernate.plugin.version>2.2</hibernate.plugin.version>
         <tools.version>1.5</tools.version>
         <mysql.version>5.1.17</mysql.version>
+        <migration.env>test</migration.env>
     </properties>
 
     <dependencies>

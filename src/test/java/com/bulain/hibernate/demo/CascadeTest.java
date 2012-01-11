@@ -1,11 +1,13 @@
 package com.bulain.hibernate.demo;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.bulain.hibernate.entity.Group;
+import com.bulain.hibernate.entity.GroupPermission;
 import com.bulain.hibernate.entity.GroupUser;
 import com.bulain.hibernate.entity.User;
 import com.bulain.hibernate.test.HibernateTestCase;
@@ -14,6 +16,7 @@ import com.bulain.hibernate.test.HibernateTestCase;
 public class CascadeTest extends HibernateTestCase{
     @Test
     public void testCascade(){
+        //prepare test data 
         User user = new User();
         user.setFirstName("firstName");
         user.setLastName("lastName");
@@ -25,16 +28,30 @@ public class CascadeTest extends HibernateTestCase{
         gu.setUser(user);
         gu.setGroup(group);
         group.getGroupUserses().add(gu);
+        
         session.save(gu);
         
         List<GroupUser> list = session.createCriteria(GroupUser.class).list();
         assertEquals(1, list.size());
         
+        GroupPermission gp = new GroupPermission();
+        gp.setGroup(group);
+        gp.setPermission("permission");
+        group.getGroupPermissionses().add(gp);
+        
+        session.save(gp);
+        
+        list = session.createCriteria(GroupPermission.class).list();
+        assertEquals(1, list.size());
+        
+        //test
         session.delete(group);
         
+        //assert after delete
         list = session.createCriteria(GroupUser.class).list();
         assertEquals(0, list.size());
+        list = session.createCriteria(GroupPermission.class).list();
+        assertEquals(0, list.size());
 
-        
     }
 }

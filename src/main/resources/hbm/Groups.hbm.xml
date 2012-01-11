@@ -32,7 +32,7 @@
             </key>
             <one-to-many class="com.bulain.hibernate.entity.GroupUser" />
         </set>
-        <set name="groupPermissionses" inverse="true">
+        <set name="groupPermissionses" inverse="true" cascade="delete">
             <key>
                 <column name="group_id" />
             </key>

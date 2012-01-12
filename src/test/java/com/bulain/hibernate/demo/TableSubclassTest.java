@@ -13,7 +13,6 @@ import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
 public class TableSubclassTest extends HibernateTestCase {
-
     @Test
     public void testTableConcreteClass() {
         Fruit fruit = new Fruit("fruit");

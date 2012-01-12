@@ -14,12 +14,12 @@ public abstract class HibernateTestCase extends ServiceTestCase {
     @Autowired
     private SessionFactory sessionFactory;
     protected Session session;
-
+    
     @Before
     public void setUp() {
         session = sessionFactory.getCurrentSession();
     }
-
+    
     @After
     public void tearDown() {
         session.flush();

@@ -14,6 +14,7 @@ Task to do:
 11, Dynamic HQL.
 12, FetchMode: DEFAULT, JOIN, SELECT.*
 13, MatchMode: EXACT, START, END, ANYWHERE.*
+14, Optimistic lock & Pessimistic lock.*
 
 If you want to run:
 1, checkout out parent and run: 

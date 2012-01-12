@@ -6,23 +6,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.bulain.common.dataset.DataSetTestExecutionListener;
+import com.bulain.common.test.SpringTestCase;
 import com.bulain.hibernate.entity.Person;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@TestExecutionListeners(value = { DependencyInjectionTestExecutionListener.class,
-        TransactionalTestExecutionListener.class, DataSetTestExecutionListener.class })
-@ContextConfiguration(locations = { "classpath*:spring/applicationContext*.xml",
-        "classpath*:spring/propertyConfigurer-test.xml" })
-public class VersionTest {
+public class VersionTest extends SpringTestCase{
     @Autowired
     private SessionFactory sessionFactory;
     

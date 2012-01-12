@@ -18,5 +18,6 @@
         <mapping resource="hbm/TableSubclass.hbm.xml" />
         <mapping resource="hbm/TableSubclassDiscriminator.hbm.xml" />
         <mapping resource="hbm/TableConcreteClass.hbm.xml" />
+        <mapping resource="hbm/Alltypes.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

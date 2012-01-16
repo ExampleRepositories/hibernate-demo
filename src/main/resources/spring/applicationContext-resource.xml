@@ -20,8 +20,7 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate3.MasterSlaverTransactionManager">
-        <property name="dataSource" ref="dataSource" />
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     

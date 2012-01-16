@@ -7,10 +7,10 @@ import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.SeedDataSet;
-import com.bulain.common.test.ServiceTestCase;
+import com.bulain.common.test.DaoTestCase;
 
 @SeedDataSet(file = "test-data/init_seed_dataset.xml")
-public abstract class HibernateTestCase extends ServiceTestCase {
+public abstract class HibernateTestCase extends DaoTestCase {
     @Autowired
     private SessionFactory sessionFactory;
     protected Session session;

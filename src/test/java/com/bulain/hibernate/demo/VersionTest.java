@@ -10,10 +10,10 @@ import org.hibernate.classic.Session;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bulain.common.test.DaoTestCase;
+import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.Person;
 
-public class VersionTest extends DaoTestCase {
+public class VersionTest extends ServiceTestCase {
     @Autowired
     private SessionFactory sessionFactory;
     

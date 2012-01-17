@@ -26,13 +26,13 @@
         <property name="updatedAt" type="timestamp">
             <column name="updated_at" length="19" />
         </property>
-        <set name="groupUserses" inverse="true" cascade="delete">
+        <set name="groupUserses" inverse="true" cascade="delete" order-by="id">
             <key>
                 <column name="group_id" />
             </key>
             <one-to-many class="com.bulain.hibernate.entity.GroupUser" />
         </set>
-        <set name="groupPermissionses" inverse="true" cascade="delete">
+        <set name="groupPermissionses" inverse="true" cascade="delete" order-by="id">
             <key>
                 <column name="group_id" />
             </key>

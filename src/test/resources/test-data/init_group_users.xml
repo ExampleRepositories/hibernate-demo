@@ -17,4 +17,9 @@
   <group_users id="105" group_id="102" user_id="101"/>
   <group_users id="106" group_id="103" user_id="101"/>
   <group_users id="107" group_id="101" user_id="103"/>
+  <group_permissions id="101" group_id="101" permission="permission_101"/>
+  <group_permissions id="102" group_id="102" permission="permission_102"/>
+  <group_permissions id="103" group_id="103" permission="permission_103"/>
+  <group_permissions id="104" group_id="104" permission="permission_104"/>
+  <group_permissions id="105" group_id="101" permission="permission_105"/>
 </dataset>

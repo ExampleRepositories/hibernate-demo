@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Arrays;
+import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.bulain.common.dataset.DataSet;
 import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.Group;
+import com.bulain.hibernate.entity.GroupPermission;
 import com.bulain.hibernate.entity.GroupUser;
 import com.bulain.hibernate.entity.User;
 
@@ -41,11 +43,24 @@ public class GroupUserServiceTest extends ServiceTestCase {
     
     @Test
     public void testGet() {
-        GroupUser select = groupUserService.get(Integer.valueOf(102), Arrays.asList(new String[] { "group", "user" }));
+        GroupUser select = groupUserService.get(Integer.valueOf(102),
+                Arrays.asList(new String[] { "group.groupUserses.user", "group.groupPermissionses", "user" }));
         assertNotNull(select);
         assertEquals("first_name_102", select.getUser().getFirstName());
         assertEquals("last_name_102", select.getUser().getLastName());
         assertEquals("name_102", select.getGroup().getName());
+        
+        //for test lazy loading
+        Group group = select.getGroup();
+        Set<GroupUser> groupUserses = group.getGroupUserses();
+        assertEquals(2, groupUserses.size());
+        
+        GroupUser gu = groupUserses.iterator().next();
+        User user = gu.getUser();
+        assertEquals(select.getUser(), user);
+        
+        Set<GroupPermission> groupPermissionses = group.getGroupPermissionses();
+        assertEquals(1, groupPermissionses.size());
     }
     
     @Test

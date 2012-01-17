@@ -6,11 +6,13 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.dataset.SeedDataSet;
+import com.bulain.common.test.DaoTestCase;
 import com.bulain.hibernate.entity.GroupPermission;
-import com.bulain.hibernate.test.HibernateTestCase;
 
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_group_permissions.xml")
-public class GroupPermissionMapperTest extends HibernateTestCase {
+public class GroupPermissionMapperTest extends DaoTestCase {
     @Autowired
     private GroupPermissionMapper groupPermissionMapper;
 

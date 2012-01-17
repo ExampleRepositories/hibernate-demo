@@ -7,13 +7,15 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.dataset.SeedDataSet;
+import com.bulain.common.test.DaoTestCase;
 import com.bulain.hibernate.entity.Group;
 import com.bulain.hibernate.entity.GroupUser;
 import com.bulain.hibernate.entity.User;
-import com.bulain.hibernate.test.HibernateTestCase;
 
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_group_users.xml")
-public class GroupUserMapperTest extends HibernateTestCase {
+public class GroupUserMapperTest extends DaoTestCase {
     @Autowired
     private GroupUserMapper groupUserMapper;
     @Autowired

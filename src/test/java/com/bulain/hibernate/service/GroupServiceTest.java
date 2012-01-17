@@ -11,14 +11,16 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
+import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.Group;
 import com.bulain.hibernate.pojo.GroupSearch;
-import com.bulain.hibernate.test.HibernateTestCase;
 
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_groups.xml")
-public class GroupServiceTest extends HibernateTestCase {
+public class GroupServiceTest extends ServiceTestCase {
     @Autowired
     private GroupService groupService;
     
@@ -37,15 +39,15 @@ public class GroupServiceTest extends HibernateTestCase {
     }
 
     @Test
-    public void testSelectByPrimaryKey() {
-        Group select = groupService.get(Integer.valueOf(102));
+    public void testGet() {
+        Group select = groupService.get(Integer.valueOf(102), null);
         assertEquals("name_102", select.getName());
         assertEquals("note_102", select.getNote());
     }
 
     @Test
-    public void testUpdateByPrimaryKey() {
-        Group record = groupService.get(103);
+    public void testUpdate() {
+        Group record = groupService.get(103, null);
         record.setName("name");
         record.setNote("note");
         groupService.update(record);

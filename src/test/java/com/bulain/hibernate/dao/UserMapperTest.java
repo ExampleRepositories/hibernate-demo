@@ -113,7 +113,7 @@ public class UserMapperTest extends DaoTestCase {
         search.setOrderBy("firstName");
         search.setSequance("desc");
         
-        List<User> list = userMapper.find("User_dynamic_find", search);
+        List<User> list = userMapper.find("dynamicFind", search);
         assertEquals(3, list.size());
     }
     
@@ -125,7 +125,7 @@ public class UserMapperTest extends DaoTestCase {
         search.setOrderBy("firstName");
         search.setSequance("desc");
         
-        Long cnt = userMapper.count("User_dynamic_find", search);
+        Long cnt = userMapper.count("dynamicFind", search);
         assertEquals(Long.valueOf(3), cnt);
     }
     
@@ -139,7 +139,7 @@ public class UserMapperTest extends DaoTestCase {
         search.setLow(0);
         search.setHigh(10);
         
-        List<User> list = userMapper.page("User_dynamic_find", search);
+        List<User> list = userMapper.page("dynamicFind", search);
         assertEquals(3, list.size());
     }
 }

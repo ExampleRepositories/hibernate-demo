@@ -39,7 +39,7 @@
             <one-to-many class="com.bulain.hibernate.entity.GroupPermission" />
         </set>
     </class>
-    <sql-query name="Group_dynamic_find" >
+    <sql-query name="com.bulain.hibernate.entity.Group.dynamicFind" >
          <![CDATA[
          from Group g 
          <#if name?exists && name?length gt 0  >

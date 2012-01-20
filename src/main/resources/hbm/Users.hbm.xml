@@ -40,7 +40,7 @@
     <sql-query name="User_native_count">
         <![CDATA[select count(*) from users where first_name = :firstName and last_name = :lastName]]>
     </sql-query>
-    <sql-query name="User_dynamic_find" >
+    <sql-query name="com.bulain.hibernate.entity.User.dynamicFind" >
          <![CDATA[
          from User u 
          where u.firstName = :firstName 

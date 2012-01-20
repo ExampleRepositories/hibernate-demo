@@ -39,7 +39,8 @@ public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> imp
     public List<T> find(String queryName, S search) {
         List<T> list = Collections.emptyList();
         try {
-            Query namedQuery = getSession().getNamedQuery(queryName);
+            String fullQueryName = getQueryName(queryName);
+            Query namedQuery = getSession().getNamedQuery(fullQueryName);
             String queryString = namedQuery.getQueryString();
             String hql = FreemarkerUtil.formatHQL(queryString, search);
             Query query = getSession().createQuery(hql);
@@ -52,11 +53,12 @@ public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> imp
         }
         return list;
     }
-    
+
     public Long count(String queryName, S search) {
         long totalCount = 0L;
         try {
-            Query namedQuery = getSession().getNamedQuery(queryName);
+            String fullQueryName = getQueryName(queryName);
+            Query namedQuery = getSession().getNamedQuery(fullQueryName);
             String queryString = namedQuery.getQueryString();
             String tempHql = FreemarkerUtil.formatHQL(queryString, search);
             
@@ -82,7 +84,8 @@ public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> imp
     public List<T> page(String queryName, S search) {
         List<T> list = Collections.emptyList();
         try {
-            Query namedQuery = getSession().getNamedQuery(queryName);
+            String fullQueryName = getQueryName(queryName);
+            Query namedQuery = getSession().getNamedQuery(fullQueryName);
             String queryString = namedQuery.getQueryString();
             String hql = FreemarkerUtil.formatHQL(queryString, search);
             Query query = getSession().createQuery(hql);
@@ -96,6 +99,10 @@ public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> imp
             throw new ServiceException(e);
         }
         return list;
+    }
+    
+    private String getQueryName(String queryName) {
+        return entityClass.getName() + "." + queryName;
     }
     
     public List<T> find(DetachedCriteria dc, OrderBy orderBy) {
@@ -150,4 +157,6 @@ public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> imp
         
         return criteria.list();
     }
+    
+    
 }

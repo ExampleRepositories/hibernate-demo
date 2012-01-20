@@ -104,7 +104,7 @@ public class GroupMapperTest extends DaoTestCase {
         search.setName("name_page");
         search.setOrderBy("name");
         
-        List<Group> list = groupMapper.find("Group_dynamic_find", search);
+        List<Group> list = groupMapper.find("dynamicFind", search);
         assertEquals(3, list.size());
     }
     
@@ -114,7 +114,7 @@ public class GroupMapperTest extends DaoTestCase {
         search.setName("name_page");
         search.setOrderBy("name");
         
-        Long cnt = groupMapper.count("Group_dynamic_find", search);
+        Long cnt = groupMapper.count("dynamicFind", search);
         assertEquals(Long.valueOf(3), cnt);
     }
     
@@ -126,7 +126,7 @@ public class GroupMapperTest extends DaoTestCase {
         search.setLow(0);
         search.setHigh(10);
         
-        List<Group> list = groupMapper.page("Group_dynamic_find", search);
+        List<Group> list = groupMapper.page("dynamicFind", search);
         assertEquals(3, list.size());
     }
 }

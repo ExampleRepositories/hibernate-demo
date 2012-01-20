@@ -29,7 +29,7 @@ public class DynamicQueryTest extends HibernateTestCase {
         search.setOrderBy("firstName");
         search.setSequance("desc");
         
-        Query namedQuery = session.getNamedQuery("User_dynamic_find");
+        Query namedQuery = session.getNamedQuery("com.bulain.hibernate.entity.User.dynamicFind");
         String queryString = namedQuery.getQueryString();
         String hql = FreemarkerUtil.formatHQL(queryString, search);
         Query query = session.createQuery(hql);

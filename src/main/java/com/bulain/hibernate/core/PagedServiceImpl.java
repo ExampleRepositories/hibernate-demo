@@ -7,10 +7,9 @@ import org.hibernate.criterion.DetachedCriteria;
 import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.page.Search;
-import com.bulain.common.util.KeyUtil;
 
 public abstract class PagedServiceImpl<T, S extends Search> extends BasicServiceImpl<T> implements PagedService<T, S> {
-    private static final String DYNAMIC_FIND = "_dynamic_find";
+    private static final String DYNAMIC_FIND = "dynamicFind";
 
     protected abstract PagedMapper<T, S> getPagedMapper();
     
@@ -34,24 +33,21 @@ public abstract class PagedServiceImpl<T, S extends Search> extends BasicService
     }
     
     public List<T> find(S search) {
-        String queryName = KeyUtil.getShortClassName(entityClass) + DYNAMIC_FIND;
-        List<T> list = getPagedMapper().find(queryName, search);
+        List<T> list = getPagedMapper().find(DYNAMIC_FIND, search);
         return list;
     }
     
     public Long count(S search) {
-        String queryName = KeyUtil.getShortClassName(entityClass) + DYNAMIC_FIND;
-        Long cnt = getPagedMapper().count(queryName, search);
+        Long cnt = getPagedMapper().count(DYNAMIC_FIND, search);
         return cnt;
     }
     
     public List<T> page(S search, Page page) {
-        String queryName = KeyUtil.getShortClassName(entityClass) + DYNAMIC_FIND;
-        Long cnt = getPagedMapper().count(queryName, search);
+        Long cnt = getPagedMapper().count(DYNAMIC_FIND, search);
         page.setCount(cnt.longValue());
         search.setLow(page.getLow());
         search.setHigh(page.getHigh());
-        List<T> list = getPagedMapper().find(queryName, search);
+        List<T> list = getPagedMapper().find(DYNAMIC_FIND, search);
         return list;
     }
 }

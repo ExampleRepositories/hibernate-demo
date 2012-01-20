@@ -13,12 +13,7 @@ import com.bulain.common.exception.ServiceException;
 import com.bulain.hibernate.util.ReflectionUtils;
 
 public abstract class BasicServiceImpl<T> implements BasicService<T> {
-    protected Class<T> entityClass;
     protected abstract BasicMapper<T> getBasicMapper();
-    
-    public BasicServiceImpl(){
-        this.entityClass = ReflectionUtils.getSuperClassGenricType(getClass());
-    }
     
     public T get(Integer id, List<String> properties) {
         T entity = getBasicMapper().selectByPrimaryKey(id);

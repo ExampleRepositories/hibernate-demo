@@ -16,7 +16,6 @@ import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.test.DaoTestCase;
 import com.bulain.hibernate.entity.Permission;
-import com.bulain.hibernate.pojo.PermissionSearch;
 
 @SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_permissions.xml")
@@ -56,7 +55,7 @@ public class PermissionMapperTest extends DaoTestCase {
 
     @Test
     public void testFind() {
-        PermissionSearch search = new PermissionSearch();
+        Permission search = new Permission();
         search.setPermission("permission_page");
         OrderBy orderBy = new OrderBy();
         orderBy.setOrderBy("permission");
@@ -71,7 +70,7 @@ public class PermissionMapperTest extends DaoTestCase {
 
     @Test
     public void testCount() {
-        PermissionSearch search = new PermissionSearch();
+        Permission search = new Permission();
         search.setPermission("permission_page");
         
         Example example = Example.create(search);
@@ -83,7 +82,7 @@ public class PermissionMapperTest extends DaoTestCase {
 
     @Test
     public void testPage() {
-        PermissionSearch search = new PermissionSearch();
+        Permission search = new Permission();
         search.setPermission("permission_page");
         Page page = new Page();
         page.setCount(10);

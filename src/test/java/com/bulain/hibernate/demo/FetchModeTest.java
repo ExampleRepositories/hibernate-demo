@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import com.bulain.common.dataset.DataSet;
 import com.bulain.hibernate.entity.Group;
-import com.bulain.hibernate.pojo.GroupSearch;
 import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
@@ -22,7 +21,7 @@ public class FetchModeTest extends HibernateTestCase {
 
     @Test
     public void testFetchModeDefault() {
-        GroupSearch search = new GroupSearch();
+        Group search = new Group();
         search.setName("name_page");
 
         Example example = Example.create(search);
@@ -39,7 +38,7 @@ public class FetchModeTest extends HibernateTestCase {
 
     @Test
     public void testFetchModeJoin() {
-        GroupSearch search = new GroupSearch();
+        Group search = new Group();
         search.setName("name_page");
 
         Example example = Example.create(search);
@@ -56,7 +55,7 @@ public class FetchModeTest extends HibernateTestCase {
 
     @Test
     public void testFetchModeSelect() {
-        GroupSearch search = new GroupSearch();
+        Group search = new Group();
         search.setName("name_page");
 
         Example example = Example.create(search);

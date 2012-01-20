@@ -16,7 +16,6 @@ import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.test.DaoTestCase;
 import com.bulain.hibernate.entity.User;
-import com.bulain.hibernate.pojo.UserSearch;
 
 @SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_users.xml")
@@ -61,7 +60,7 @@ public class UserMapperTest extends DaoTestCase {
 
     @Test
     public void testFind() {
-        UserSearch search = new UserSearch();
+        User search = new User();
         search.setFirstName("first_name_page");
         search.setLastName("last_name_page");
 
@@ -77,7 +76,7 @@ public class UserMapperTest extends DaoTestCase {
 
     @Test
     public void testCount() {
-        UserSearch search = new UserSearch();
+        User search = new User();
         search.setFirstName("first_name_page");
         search.setLastName("last_name_page");
 
@@ -90,7 +89,7 @@ public class UserMapperTest extends DaoTestCase {
 
     @Test
     public void testPage() {
-        UserSearch search = new UserSearch();
+        User search = new User();
         search.setFirstName("first_name_page");
         search.setLastName("last_name_page");
 

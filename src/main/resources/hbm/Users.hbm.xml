@@ -40,4 +40,15 @@
     <sql-query name="User_native_count">
         <![CDATA[select count(*) from users where first_name = :firstName and last_name = :lastName]]>
     </sql-query>
+    <sql-query name="User_dynamic_find" >
+         <![CDATA[
+         from User u 
+         where u.firstName = :firstName 
+         <#if lastName?exists && lastName?length gt 0  >
+         and u.lastName = :lastName 
+         </#if>
+         <#if orderBy?exists>order by u.${orderBy}<#else>order by u.id</#if>
+         <#if sequance?exists>${sequance}</#if>
+         ]]>
+    </sql-query>
 </hibernate-mapping>

@@ -15,7 +15,6 @@ import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.test.DaoTestCase;
 import com.bulain.hibernate.entity.Group;
-import com.bulain.hibernate.pojo.GroupSearch;
 
 @SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_groups.xml")
@@ -56,7 +55,7 @@ public class GroupMapperTest extends DaoTestCase {
 
     @Test
     public void testFind() {
-        GroupSearch search = new GroupSearch();
+        Group search = new Group();
         search.setName("name_page");
         OrderBy orderBy = new OrderBy();
         orderBy.setOrderBy("name");
@@ -71,7 +70,7 @@ public class GroupMapperTest extends DaoTestCase {
 
     @Test
     public void testCount() {
-        GroupSearch search = new GroupSearch();
+        Group search = new Group();
         search.setName("name_page");
 
         Example example = Example.create(search);
@@ -83,7 +82,7 @@ public class GroupMapperTest extends DaoTestCase {
 
     @Test
     public void testPage() {
-        GroupSearch search = new GroupSearch();
+        Group search = new Group();
         search.setName("name_page");
         Page page = new Page();
         page.setCount(10);

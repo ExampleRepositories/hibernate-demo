@@ -7,12 +7,13 @@ import com.bulain.hibernate.core.PagedMapper;
 import com.bulain.hibernate.core.PagedServiceImpl;
 import com.bulain.hibernate.dao.GroupMapper;
 import com.bulain.hibernate.entity.Group;
+import com.bulain.hibernate.pojo.GroupSearch;
 
-public class GroupServiceImpl extends PagedServiceImpl<Group> implements GroupService {
+public class GroupServiceImpl extends PagedServiceImpl<Group, GroupSearch> implements GroupService {
     private GroupMapper groupMapper;
 
     @Override
-    protected PagedMapper<Group> getPagedMapper() {
+    protected PagedMapper<Group, GroupSearch> getPagedMapper() {
         return groupMapper;
     }
 

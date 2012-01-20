@@ -16,20 +16,21 @@ import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.test.DaoTestCase;
 import com.bulain.hibernate.entity.User;
+import com.bulain.hibernate.pojo.UserSearch;
 
 @SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_users.xml")
 public class UserMapperTest extends DaoTestCase {
-
+    
     @Autowired
     private UserMapper userMapper;
-
+    
     @Test
     public void testDeleteByPrimaryKey() {
         int deleteByPrimaryKey = userMapper.deleteByPrimaryKey(Integer.valueOf(101));
         assertEquals(1, deleteByPrimaryKey);
     }
-
+    
     @Test
     public void testInsert() {
         User record = new User();
@@ -39,16 +40,16 @@ public class UserMapperTest extends DaoTestCase {
         assertEquals(1, insert);
         assertNotNull(record.getId());
     }
-
+    
     @Test
     public void testSelectByPrimaryKey() {
         User selectByPrimaryKey = userMapper.selectByPrimaryKey(Integer.valueOf(102));
         assertNotNull(selectByPrimaryKey);
-
+        
         assertEquals("first_name_102", selectByPrimaryKey.getFirstName());
         assertEquals("last_name_102", selectByPrimaryKey.getLastName());
     }
-
+    
     @Test
     public void testUpdateByPrimaryKey() {
         User record = userMapper.selectByPrimaryKey(104);
@@ -57,50 +58,88 @@ public class UserMapperTest extends DaoTestCase {
         int updateByPrimaryKey = userMapper.updateByPrimaryKey(record);
         assertEquals(1, updateByPrimaryKey);
     }
-
+    
     @Test
     public void testFind() {
         User search = new User();
         search.setFirstName("first_name_page");
         search.setLastName("last_name_page");
-
+        
         Example example = Example.create(search);
         DetachedCriteria dc = DetachedCriteria.forClass(User.class).add(example);
         OrderBy orderBy = new OrderBy();
         orderBy.setOrderBy("firstName");
         orderBy.setSequance("asc");
-
+        
         List<User> find = userMapper.find(dc, orderBy);
         assertEquals(3, find.size());
     }
-
+    
     @Test
     public void testCount() {
         User search = new User();
         search.setFirstName("first_name_page");
         search.setLastName("last_name_page");
-
+        
         Example example = Example.create(search);
         DetachedCriteria dc = DetachedCriteria.forClass(User.class).add(example);
-
+        
         Long count = userMapper.count(dc);
         assertEquals(Long.valueOf(3), count);
     }
-
+    
     @Test
     public void testPage() {
         User search = new User();
         search.setFirstName("first_name_page");
         search.setLastName("last_name_page");
-
+        
         Example example = Example.create(search);
         DetachedCriteria dc = DetachedCriteria.forClass(User.class).add(example);
         Page page = new Page();
         OrderBy orderBy = new OrderBy();
         orderBy.setOrderBy("firstName");
         orderBy.setSequance("asc");
-
+        
         List<User> listUser = userMapper.page(dc, page, orderBy);
         assertEquals(3, listUser.size());
+    }
+    
+    @Test
+    public void testDynamicFind() {
+        UserSearch search = new UserSearch();
+        search.setFirstName("first_name_page");
+        search.setLastName("last_name_page");
+        search.setOrderBy("firstName");
+        search.setSequance("desc");
+        
+        List<User> list = userMapper.find("User_dynamic_find", search);
+        assertEquals(3, list.size());
+    }
+    
+    @Test
+    public void testDynamicCount() {
+        UserSearch search = new UserSearch();
+        search.setFirstName("first_name_page");
+        search.setLastName("last_name_page");
+        search.setOrderBy("firstName");
+        search.setSequance("desc");
+        
+        Long cnt = userMapper.count("User_dynamic_find", search);
+        assertEquals(Long.valueOf(3), cnt);
+    }
+    
+    @Test
+    public void testDynamicPage() {
+        UserSearch search = new UserSearch();
+        search.setFirstName("first_name_page");
+        search.setLastName("last_name_page");
+        search.setOrderBy("firstName");
+        search.setSequance("desc");
+        search.setLow(0);
+        search.setHigh(10);
+        
+        List<User> list = userMapper.page("User_dynamic_find", search);
+        assertEquals(3, list.size());
     }
 }

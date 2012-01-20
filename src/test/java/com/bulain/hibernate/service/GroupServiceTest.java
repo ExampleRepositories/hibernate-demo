@@ -16,6 +16,7 @@ import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.Group;
+import com.bulain.hibernate.pojo.GroupSearch;
 
 @SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_groups.xml")
@@ -94,5 +95,37 @@ public class GroupServiceTest extends ServiceTestCase {
 
         List<Group> page2 = groupService.page(dc, page, orderBy);
         assertEquals(3, page2.size());
+    }
+    
+    @Test
+    public void testDynamicFind(){
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+        search.setOrderBy("name");
+        
+        List<Group> list = groupService.find(search);
+        assertEquals(3, list.size());
+    }
+    
+    @Test
+    public void testDynamicCount(){
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+        search.setOrderBy("name");
+        
+        Long cnt = groupService.count(search);
+        assertEquals(Long.valueOf(3), cnt);
+    }
+    
+    @Test
+    public void testDynamicPage(){
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+        search.setOrderBy("name");
+        Page page = new Page();
+        page.setCount(10);
+        
+        List<Group> list = groupService.page(search, page);
+        assertEquals(3, list.size());
     }
 }

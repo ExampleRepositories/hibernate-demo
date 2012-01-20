@@ -39,4 +39,14 @@
             <one-to-many class="com.bulain.hibernate.entity.GroupPermission" />
         </set>
     </class>
+    <sql-query name="Group_dynamic_find" >
+         <![CDATA[
+         from Group g 
+         <#if name?exists && name?length gt 0  >
+         where g.name = :name
+         </#if>
+         <#if orderBy?exists>order by g.${orderBy}<#else>order by g.id</#if>
+         <#if sequance?exists>${sequance}</#if>
+         ]]>
+    </sql-query>
 </hibernate-mapping>

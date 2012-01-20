@@ -43,6 +43,7 @@ public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> imp
             String queryString = namedQuery.getQueryString();
             String hql = FreemarkerUtil.formatHQL(queryString, search);
             Query query = getSession().createQuery(hql);
+            query.setProperties(search);
             list = query.list();
         } catch (IOException e) {
             throw new ServiceException(e);
@@ -63,10 +64,11 @@ public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> imp
             int indexOfFrom = tempHql.toLowerCase().indexOf("from");
             int length = tempHql.length();
             StringBuffer hql = new StringBuffer();
-            hql.append("select count(1) ");
+            hql.append("select count(*) ");
             hql.append(tempHql.substring(indexOfFrom, length));
             
             Query query = getSession().createQuery(hql.toString());
+            query.setProperties(search);
             Number cnt = (Number) query.uniqueResult();
             totalCount = cnt.longValue();
         } catch (IOException e) {
@@ -86,6 +88,7 @@ public class PagedMapperImpl<T, S extends Search> extends BasicMapperImpl<T> imp
             Query query = getSession().createQuery(hql);
             query.setFirstResult((int) search.getLow());
             query.setMaxResults((int) search.getPageSize());
+            query.setProperties(search);
             list = query.list();
         } catch (IOException e) {
             throw new ServiceException(e);

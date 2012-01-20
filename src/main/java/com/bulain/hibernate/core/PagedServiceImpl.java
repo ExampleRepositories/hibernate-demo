@@ -7,6 +7,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.page.Search;
+import com.bulain.common.util.KeyUtil;
 
 public abstract class PagedServiceImpl<T, S extends Search> extends BasicServiceImpl<T> implements PagedService<T, S> {
     private static final String DYNAMIC_FIND = "_dynamic_find";
@@ -33,19 +34,19 @@ public abstract class PagedServiceImpl<T, S extends Search> extends BasicService
     }
     
     public List<T> find(S search) {
-        String queryName = entityClass.getName() + DYNAMIC_FIND;
+        String queryName = KeyUtil.getShortClassName(entityClass) + DYNAMIC_FIND;
         List<T> list = getPagedMapper().find(queryName, search);
         return list;
     }
     
     public Long count(S search) {
-        String queryName = entityClass.getName() + DYNAMIC_FIND;
+        String queryName = KeyUtil.getShortClassName(entityClass) + DYNAMIC_FIND;
         Long cnt = getPagedMapper().count(queryName, search);
         return cnt;
     }
     
     public List<T> page(S search, Page page) {
-        String queryName = entityClass.getName() + DYNAMIC_FIND;
+        String queryName = KeyUtil.getShortClassName(entityClass) + DYNAMIC_FIND;
         Long cnt = getPagedMapper().count(queryName, search);
         page.setCount(cnt.longValue());
         search.setLow(page.getLow());

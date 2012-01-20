@@ -15,6 +15,7 @@ import com.bulain.common.page.OrderBy;
 import com.bulain.common.page.Page;
 import com.bulain.common.test.DaoTestCase;
 import com.bulain.hibernate.entity.Group;
+import com.bulain.hibernate.pojo.GroupSearch;
 
 @SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_groups.xml")
@@ -97,4 +98,35 @@ public class GroupMapperTest extends DaoTestCase {
         assertEquals(3, page2.size());
     }
 
+    @Test
+    public void testDynamicFind(){
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+        search.setOrderBy("name");
+        
+        List<Group> list = groupMapper.find("Group_dynamic_find", search);
+        assertEquals(3, list.size());
+    }
+    
+    @Test
+    public void testDynamicCount(){
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+        search.setOrderBy("name");
+        
+        Long cnt = groupMapper.count("Group_dynamic_find", search);
+        assertEquals(Long.valueOf(3), cnt);
+    }
+    
+    @Test
+    public void testDynamicPage(){
+        GroupSearch search = new GroupSearch();
+        search.setName("name_page");
+        search.setOrderBy("name");
+        search.setLow(0);
+        search.setHigh(10);
+        
+        List<Group> list = groupMapper.page("Group_dynamic_find", search);
+        assertEquals(3, list.size());
+    }
 }

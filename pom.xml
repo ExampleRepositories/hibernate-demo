@@ -155,6 +155,10 @@
                 <artifactId>hibernate3-maven-plugin</artifactId>
                 <version>${hibernate.plugin.version}</version>
                 <configuration>
+                    <hibernate>
+                        <configurationFile>src/test/resources/hibernate.cfg.xml</configurationFile>
+                        <propertyfile>src/test/resources/database.properties</propertyfile>
+                    </hibernate>
                     <components>
                         <component>
                             <name>hbm2java</name>

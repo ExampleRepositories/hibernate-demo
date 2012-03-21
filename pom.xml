@@ -50,6 +50,11 @@
             <artifactId>hibernate-annotations</artifactId>
             <version>${hibernate.anno.version}</version>
         </dependency>
+        <!-- dbcp -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+        </dependency>
         <!-- driver -->
         <dependency>
             <groupId>p6spy</groupId>

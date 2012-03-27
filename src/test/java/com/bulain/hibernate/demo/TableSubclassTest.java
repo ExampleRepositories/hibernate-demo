@@ -6,12 +6,14 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.Apple;
 import com.bulain.hibernate.entity.Fruit;
 import com.bulain.hibernate.entity.Pear;
 
 @SuppressWarnings("unchecked")
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 public class TableSubclassTest extends HibernateTestCase {
     @Test
     public void testTableConcreteClass() {

@@ -7,11 +7,13 @@ import java.util.TimeZone;
 import org.junit.Test;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.test.HibernateTestCase;
 import com.bulain.common.util.SystemClock;
 import com.bulain.hibernate.entity.Alltype;
 
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 public class AllTypeTest extends HibernateTestCase {
     @Test
     public void testAllType() {

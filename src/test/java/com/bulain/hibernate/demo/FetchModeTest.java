@@ -12,10 +12,12 @@ import org.hibernate.criterion.Order;
 import org.junit.Test;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.Group;
 
 @SuppressWarnings("unchecked")
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_groups.xml")
 public class FetchModeTest extends HibernateTestCase {
 

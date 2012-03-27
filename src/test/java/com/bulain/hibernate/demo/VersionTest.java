@@ -10,9 +10,11 @@ import org.hibernate.classic.Session;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.test.ServiceTestCase;
 import com.bulain.hibernate.entity.Person;
 
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 public class VersionTest extends ServiceTestCase {
     @Autowired
     private SessionFactory sessionFactory;

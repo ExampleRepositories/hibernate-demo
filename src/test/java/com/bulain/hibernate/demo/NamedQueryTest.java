@@ -7,10 +7,12 @@ import java.util.List;
 import org.junit.Test;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.User;
 
 @SuppressWarnings("unchecked")
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_users.xml")
 public class NamedQueryTest extends HibernateTestCase {
 

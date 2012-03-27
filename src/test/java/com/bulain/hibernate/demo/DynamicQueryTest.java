@@ -10,6 +10,7 @@ import org.hibernate.Query;
 import org.junit.Test;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.dataset.SeedDataSet;
 import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.User;
 import com.bulain.hibernate.pojo.UserSearch;
@@ -18,6 +19,7 @@ import com.bulain.hibernate.util.FreemarkerUtil;
 import freemarker.template.TemplateException;
 
 @SuppressWarnings("unchecked")
+@SeedDataSet(file = "test-data/init_seed_dataset.xml")
 @DataSet(file = "test-data/init_users.xml")
 public class DynamicQueryTest extends HibernateTestCase {
     

@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.Computer;
 import com.bulain.hibernate.entity.Desktop;
 import com.bulain.hibernate.entity.Lappad;
-import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
 public class TableSubclassDiscriminatorTest extends HibernateTestCase {

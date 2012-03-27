@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.Group;
 import com.bulain.hibernate.entity.GroupPermission;
 import com.bulain.hibernate.entity.GroupUser;
 import com.bulain.hibernate.entity.User;
-import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
 public class CascadeTest extends HibernateTestCase{

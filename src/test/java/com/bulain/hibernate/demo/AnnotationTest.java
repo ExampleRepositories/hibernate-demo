@@ -8,8 +8,8 @@ import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.Person;
-import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
 @DataSet(file = "test-data/init_persons.xml")

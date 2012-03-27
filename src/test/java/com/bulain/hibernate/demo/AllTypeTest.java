@@ -7,9 +7,9 @@ import java.util.TimeZone;
 import org.junit.Test;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import com.bulain.common.test.HibernateTestCase;
 import com.bulain.common.util.SystemClock;
 import com.bulain.hibernate.entity.Alltype;
-import com.bulain.hibernate.test.HibernateTestCase;
 
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
 public class AllTypeTest extends HibernateTestCase {

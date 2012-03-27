@@ -10,9 +10,9 @@ import org.hibernate.Query;
 import org.junit.Test;
 
 import com.bulain.common.dataset.DataSet;
+import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.User;
 import com.bulain.hibernate.pojo.UserSearch;
-import com.bulain.hibernate.test.HibernateTestCase;
 import com.bulain.hibernate.util.FreemarkerUtil;
 
 import freemarker.template.TemplateException;

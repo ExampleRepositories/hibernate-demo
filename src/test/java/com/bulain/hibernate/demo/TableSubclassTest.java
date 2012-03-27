@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.Apple;
 import com.bulain.hibernate.entity.Fruit;
 import com.bulain.hibernate.entity.Pear;
-import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
 public class TableSubclassTest extends HibernateTestCase {

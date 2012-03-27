@@ -1,14 +1,15 @@
 package com.bulain.hibernate.demo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 
 import org.junit.Test;
 
+import com.bulain.common.test.HibernateTestCase;
 import com.bulain.hibernate.entity.Bike;
 import com.bulain.hibernate.entity.Car;
 import com.bulain.hibernate.entity.Vehicle;
-import com.bulain.hibernate.test.HibernateTestCase;
 
 @SuppressWarnings("unchecked")
 public class TableClassHierarchyTest extends HibernateTestCase {

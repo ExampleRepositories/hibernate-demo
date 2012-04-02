@@ -17,7 +17,7 @@ public class GroupPermission implements Entity, Trackable, java.io.Serializable 
      * 
      */
     private static final long serialVersionUID = -1068522968068681527L;
-    private Integer id;
+    private Long id;
      private Group group;
      private String permission;
      private String createdBy;
@@ -37,11 +37,11 @@ public class GroupPermission implements Entity, Trackable, java.io.Serializable 
        this.updatedAt = updatedAt;
     }
    
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public Group getGroup() {

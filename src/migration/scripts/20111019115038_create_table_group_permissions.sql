@@ -1,8 +1,8 @@
 --// create table group_permissions
 -- Migration SQL that makes the change goes here.
 create table group_permissions(
-	id int(11) NOT NULL auto_increment,
-	group_id int(11),
+	id bigint(11) NOT NULL auto_increment,
+	group_id bigint(11),
 	permission varchar(50),
 
 	created_by varchar(20),

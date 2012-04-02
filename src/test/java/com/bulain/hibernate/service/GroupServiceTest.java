@@ -26,7 +26,7 @@ public class GroupServiceTest extends ServiceTestCase {
     
     @Test
     public void testDelete() {
-        groupService.delete(Integer.valueOf(101));
+        groupService.delete(Long.valueOf(101));
     }
 
     @Test
@@ -40,14 +40,14 @@ public class GroupServiceTest extends ServiceTestCase {
 
     @Test
     public void testGet() {
-        Group select = groupService.get(Integer.valueOf(102), null);
+        Group select = groupService.get(Long.valueOf(102), null);
         assertEquals("name_102", select.getName());
         assertEquals("note_102", select.getNote());
     }
 
     @Test
     public void testUpdate() {
-        Group record = groupService.get(103, null);
+        Group record = groupService.get(103L, null);
         record.setName("name");
         record.setNote("note");
         groupService.update(record);

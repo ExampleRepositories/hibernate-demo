@@ -1,7 +1,7 @@
 --// create table alltypes
 -- Migration SQL that makes the change goes here.
 create table alltypes(
-    id int(11) NOT NULL auto_increment,
+    id bigint(11) NOT NULL auto_increment,
     fvarchar varchar(20),
     fdate date,
     fdatetime datetime,

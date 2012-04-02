@@ -25,17 +25,17 @@ public class GroupUserServiceTest extends ServiceTestCase {
     
     @Test
     public void testDelete() {
-        groupUserService.delete(Integer.valueOf(101));
+        groupUserService.delete(Long.valueOf(101));
     }
     
     @Test
     public void testInsert() {
         GroupUser record = new GroupUser();
         User user = new User();
-        user.setId(105);
+        user.setId(105L);
         record.setUser(user);
         Group group = new Group();
-        group.setId(105);
+        group.setId(105L);
         record.setGroup(group);
         groupUserService.insert(record);
         assertNotNull(record.getId());
@@ -43,7 +43,7 @@ public class GroupUserServiceTest extends ServiceTestCase {
     
     @Test
     public void testGet() {
-        GroupUser select = groupUserService.get(Integer.valueOf(102),
+        GroupUser select = groupUserService.get(Long.valueOf(102),
                 Arrays.asList(new String[] { "group.groupUserses.user", "group.groupPermissionses", "user" }));
         assertNotNull(select);
         assertEquals("first_name_102", select.getUser().getFirstName());
@@ -65,9 +65,9 @@ public class GroupUserServiceTest extends ServiceTestCase {
     
     @Test
     public void testUpdate() {
-        GroupUser record = groupUserService.get(103, null);
+        GroupUser record = groupUserService.get(103L, null);
         Group group = new Group();
-        group.setId(105);
+        group.setId(105L);
         record.setGroup(group);
         groupUserService.update(record);
     }

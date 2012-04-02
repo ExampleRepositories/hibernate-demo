@@ -1,9 +1,9 @@
 --// create table group_users
 -- Migration SQL that makes the change goes here.
 create table group_users(
-	id int(11) NOT NULL auto_increment,
-	group_id int(11),
-	user_id int(11),
+	id bigint(11) NOT NULL auto_increment,
+	group_id bigint(11),
+	user_id bigint(11),
 
 	created_by varchar(20),
 	created_at datetime,

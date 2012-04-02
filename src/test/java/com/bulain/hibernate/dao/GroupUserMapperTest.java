@@ -25,16 +25,16 @@ public class GroupUserMapperTest extends DaoTestCase {
 
     @Test
     public void testDeleteByPrimaryKey() {
-        int deleteByPrimaryKey = groupUserMapper.deleteByPrimaryKey(Integer.valueOf(101));
+        int deleteByPrimaryKey = groupUserMapper.deleteByPrimaryKey(Long.valueOf(101));
         assertEquals(1, deleteByPrimaryKey);
     }
 
     @Test
     public void testInsert() {
         GroupUser record = new GroupUser();
-        User user = userMapper.selectByPrimaryKey(105);
+        User user = userMapper.selectByPrimaryKey(105L);
         record.setUser(user);
-        Group group = groupMapper.selectByPrimaryKey(105);
+        Group group = groupMapper.selectByPrimaryKey(105L);
         record.setGroup(group);
         int insert = groupUserMapper.insert(record);
         assertEquals(1, insert);
@@ -42,7 +42,7 @@ public class GroupUserMapperTest extends DaoTestCase {
 
     @Test
     public void testSelectByPrimaryKey() {
-        GroupUser select = groupUserMapper.selectByPrimaryKey(Integer.valueOf(102));
+        GroupUser select = groupUserMapper.selectByPrimaryKey(Long.valueOf(102));
         assertNotNull(select);
         assertEquals("first_name_102", select.getUser().getFirstName());
         assertEquals("last_name_102", select.getUser().getLastName());
@@ -51,8 +51,8 @@ public class GroupUserMapperTest extends DaoTestCase {
 
     @Test
     public void testUpdateByPrimaryKey() {
-        GroupUser record = groupUserMapper.selectByPrimaryKey(104);
-        Group group = groupMapper.selectByPrimaryKey(105);
+        GroupUser record = groupUserMapper.selectByPrimaryKey(104L);
+        Group group = groupMapper.selectByPrimaryKey(105L);
         record.setGroup(group);
         int updateByPrimaryKey = groupUserMapper.updateByPrimaryKey(record);
         assertEquals(1, updateByPrimaryKey);

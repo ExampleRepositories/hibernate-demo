@@ -17,7 +17,7 @@ public class User implements Entity, Trackable, java.io.Serializable {
      * 
      */
     private static final long serialVersionUID = -8353150711231204640L;
-    private Integer id;
+    private Long id;
      private String firstName;
      private String lastName;
      private String createdBy;
@@ -37,11 +37,11 @@ public class User implements Entity, Trackable, java.io.Serializable {
        this.updatedAt = updatedAt;
     }
    
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFirstName() {

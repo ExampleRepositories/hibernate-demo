@@ -27,7 +27,7 @@ public class UserMapperTest extends DaoTestCase {
     
     @Test
     public void testDeleteByPrimaryKey() {
-        int deleteByPrimaryKey = userMapper.deleteByPrimaryKey(Integer.valueOf(101));
+        int deleteByPrimaryKey = userMapper.deleteByPrimaryKey(Long.valueOf(101));
         assertEquals(1, deleteByPrimaryKey);
     }
     
@@ -43,7 +43,7 @@ public class UserMapperTest extends DaoTestCase {
     
     @Test
     public void testSelectByPrimaryKey() {
-        User selectByPrimaryKey = userMapper.selectByPrimaryKey(Integer.valueOf(102));
+        User selectByPrimaryKey = userMapper.selectByPrimaryKey(Long.valueOf(102));
         assertNotNull(selectByPrimaryKey);
         
         assertEquals("first_name_102", selectByPrimaryKey.getFirstName());
@@ -52,7 +52,7 @@ public class UserMapperTest extends DaoTestCase {
     
     @Test
     public void testUpdateByPrimaryKey() {
-        User record = userMapper.selectByPrimaryKey(104);
+        User record = userMapper.selectByPrimaryKey(104L);
         record.setFirstName("firstName-updated");
         record.setLastName("lastName-updated");
         int updateByPrimaryKey = userMapper.updateByPrimaryKey(record);

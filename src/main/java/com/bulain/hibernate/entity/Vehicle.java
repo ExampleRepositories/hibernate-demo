@@ -13,7 +13,7 @@ public class Vehicle  implements java.io.Serializable {
      * 
      */
     private static final long serialVersionUID = 415770644107456953L;
-    private long id;
+    private Long id;
      private String name;
 
     public Vehicle() {
@@ -23,11 +23,11 @@ public class Vehicle  implements java.io.Serializable {
        this.name = name;
     }
    
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
     
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {

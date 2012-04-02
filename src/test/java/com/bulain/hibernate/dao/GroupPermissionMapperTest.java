@@ -18,7 +18,7 @@ public class GroupPermissionMapperTest extends DaoTestCase {
 
     @Test
     public void testDeleteByPrimaryKey() {
-        int deleteByPrimaryKey = groupPermissionMapper.deleteByPrimaryKey(Integer.valueOf(101));
+        int deleteByPrimaryKey = groupPermissionMapper.deleteByPrimaryKey(Long.valueOf(101));
         assertEquals(1, deleteByPrimaryKey);
     }
 
@@ -32,13 +32,13 @@ public class GroupPermissionMapperTest extends DaoTestCase {
 
     @Test
     public void testSelectByPrimaryKey() {
-        GroupPermission select = groupPermissionMapper.selectByPrimaryKey(Integer.valueOf(102));
+        GroupPermission select = groupPermissionMapper.selectByPrimaryKey(Long.valueOf(102));
         assertEquals("permission_102", select.getPermission());
     }
 
     @Test
     public void testUpdateByPrimaryKey() {
-        GroupPermission record = groupPermissionMapper.selectByPrimaryKey(103);
+        GroupPermission record = groupPermissionMapper.selectByPrimaryKey(103L);
         record.setPermission("permission-updated");
         int updateByPrimaryKey = groupPermissionMapper.updateByPrimaryKey(record);
         assertEquals(1, updateByPrimaryKey);

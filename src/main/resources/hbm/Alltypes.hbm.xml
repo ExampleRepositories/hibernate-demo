@@ -4,7 +4,7 @@
 <!-- Generated 2012-1-12 11:27:58 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
     <class name="com.bulain.hibernate.entity.Alltype" table="alltypes" catalog="hibernate_test">
-        <id name="id" type="java.lang.Integer">
+        <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />
         </id>

@@ -25,7 +25,7 @@ public class GroupMapperTest extends DaoTestCase {
 
     @Test
     public void testDeleteByPrimaryKey() {
-        int deleteByPrimaryKey = groupMapper.deleteByPrimaryKey(Integer.valueOf(101));
+        int deleteByPrimaryKey = groupMapper.deleteByPrimaryKey(Long.valueOf(101));
         assertEquals(1, deleteByPrimaryKey);
     }
 
@@ -40,14 +40,14 @@ public class GroupMapperTest extends DaoTestCase {
 
     @Test
     public void testSelectByPrimaryKey() {
-        Group select = groupMapper.selectByPrimaryKey(Integer.valueOf(102));
+        Group select = groupMapper.selectByPrimaryKey(Long.valueOf(102));
         assertEquals("name_102", select.getName());
         assertEquals("note_102", select.getNote());
     }
 
     @Test
     public void testUpdateByPrimaryKey() {
-        Group record = groupMapper.selectByPrimaryKey(103);
+        Group record = groupMapper.selectByPrimaryKey(103L);
         record.setName("name");
         record.setNote("note");
         int updateByPrimaryKey = groupMapper.updateByPrimaryKey(record);

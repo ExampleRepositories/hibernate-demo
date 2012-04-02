@@ -15,7 +15,7 @@ import com.bulain.hibernate.util.ReflectionUtils;
 public abstract class BasicServiceImpl<T> implements BasicService<T> {
     protected abstract BasicMapper<T> getBasicMapper();
     
-    public T get(Integer id, List<String> properties) {
+    public T get(Long id, List<String> properties) {
         T entity = getBasicMapper().selectByPrimaryKey(id);
         if (entity == null) {
             throw new NotFoundException();
@@ -88,7 +88,7 @@ public abstract class BasicServiceImpl<T> implements BasicService<T> {
         }
     }
     
-    public void delete(Integer id) {
+    public void delete(Long id) {
         int count = getBasicMapper().deleteByPrimaryKey(id);
         if (count != 1) {
             throw new ServiceException();

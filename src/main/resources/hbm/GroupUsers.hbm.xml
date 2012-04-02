@@ -4,7 +4,7 @@
 <!-- Generated 2011-10-21 23:54:38 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
     <class name="com.bulain.hibernate.entity.GroupUser" table="group_users">
-        <id name="id" type="java.lang.Integer">
+        <id name="id" type="java.lang.Long">
             <column name="id" />
             <generator class="identity" />
         </id>

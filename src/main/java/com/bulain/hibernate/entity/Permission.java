@@ -17,7 +17,7 @@ public class Permission implements Entity, Trackable, java.io.Serializable {
      * 
      */
     private static final long serialVersionUID = -1169641956884449022L;
-    private Integer id;
+    private Long id;
      private String permission;
      private String createdBy;
      private Date createdAt;
@@ -35,11 +35,11 @@ public class Permission implements Entity, Trackable, java.io.Serializable {
        this.updatedAt = updatedAt;
     }
    
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getPermission() {

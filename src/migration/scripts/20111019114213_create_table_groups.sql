@@ -1,7 +1,7 @@
 --// create table groups
 -- Migration SQL that makes the change goes here.
 create table groups(
-	id int(11) NOT NULL auto_increment,
+	id bigint(11) NOT NULL auto_increment,
 	name varchar(50),
 	note varchar(255),
 

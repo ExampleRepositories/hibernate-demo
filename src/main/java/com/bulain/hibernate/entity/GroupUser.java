@@ -17,7 +17,7 @@ public class GroupUser implements Entity, Trackable, java.io.Serializable {
      * 
      */
     private static final long serialVersionUID = -2350394695078154909L;
-    private Integer id;
+    private Long id;
      private User user;
      private Group group;
      private String createdBy;
@@ -37,11 +37,11 @@ public class GroupUser implements Entity, Trackable, java.io.Serializable {
        this.updatedAt = updatedAt;
     }
    
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public User getUser() {

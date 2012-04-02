@@ -32,17 +32,17 @@ public class LockTest extends ServiceTestCase {
     public void testPessimistic() throws InterruptedException, ExecutionException, TimeoutException {
         Session session1 = sessionFactory.openSession();
         Session session2 = sessionFactory.openSession();
-        Callable<User> worker1 = new PessimisticWorker(session1, 101);
-        Callable<User> worker2 = new PessimisticWorker(session2, 101);
+        Callable<User> worker1 = new PessimisticWorker(session1, 101L);
+        Callable<User> worker2 = new PessimisticWorker(session2, 101L);
         
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         Future<User> future1 = executorService.submit(worker1);
         Future<User> future2 = executorService.submit(worker2);
         
-        User user1 = future1.get(1, TimeUnit.MINUTES);
-        User user2 = future2.get(1, TimeUnit.MINUTES);
-        assertEquals(Integer.valueOf(101), user1.getId());
-        assertEquals(Integer.valueOf(101), user2.getId());
+        User user1 = future1.get(1L, TimeUnit.MINUTES);
+        User user2 = future2.get(1L, TimeUnit.MINUTES);
+        assertEquals(Long.valueOf(101), user1.getId());
+        assertEquals(Long.valueOf(101), user2.getId());
         assertNotSame(user1.getFirstName(), user2.getFirstName());
         
         session1.close();
@@ -54,17 +54,17 @@ public class LockTest extends ServiceTestCase {
     public void testPessimisticReflush() throws InterruptedException, ExecutionException, TimeoutException {
         Session session1 = sessionFactory.openSession();
         Session session2 = sessionFactory.openSession();
-        Callable<Person> worker1 = new PessimisticReflushWorker(session1, 101);
-        Callable<Person> worker2 = new PessimisticReflushWorker(session2, 101);
+        Callable<Person> worker1 = new PessimisticReflushWorker(session1, 101L);
+        Callable<Person> worker2 = new PessimisticReflushWorker(session2, 101L);
         
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         Future<Person> future1 = executorService.submit(worker1);
         Future<Person> future2 = executorService.submit(worker2);
         
-        Person person1 = future1.get(1, TimeUnit.MINUTES);
-        Person person2 = future2.get(1, TimeUnit.MINUTES);
-        assertEquals(Integer.valueOf(101), person1.getId());
-        assertEquals(Integer.valueOf(101), person2.getId());
+        Person person1 = future1.get(1L, TimeUnit.MINUTES);
+        Person person2 = future2.get(1L, TimeUnit.MINUTES);
+        assertEquals(Long.valueOf(101), person1.getId());
+        assertEquals(Long.valueOf(101), person2.getId());
         assertNotSame(person1.getFirstName(), person2.getFirstName());
         
         session1.close();
@@ -73,9 +73,9 @@ public class LockTest extends ServiceTestCase {
     
     static class PessimisticWorker implements Callable<User> {
         private Session session;
-        private Integer id;
+        private Long id;
         
-        public PessimisticWorker(Session session, Integer id) {
+        public PessimisticWorker(Session session, Long id) {
             this.session = session;
             this.id = id;
         }
@@ -94,9 +94,9 @@ public class LockTest extends ServiceTestCase {
     
     static class PessimisticReflushWorker implements Callable<Person> {
         private Session session;
-        private Integer id;
+        private Long id;
         
-        public PessimisticReflushWorker(Session session, Integer id) {
+        public PessimisticReflushWorker(Session session, Long id) {
             this.session = session;
             this.id = id;
         }

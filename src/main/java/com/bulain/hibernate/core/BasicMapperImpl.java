@@ -16,7 +16,7 @@ public class BasicMapperImpl<T> extends HibernateDaoSupport implements BasicMapp
         this.entityClass = clazz;
     }
 
-    public int deleteByPrimaryKey(Integer id) {
+    public int deleteByPrimaryKey(Long id) {
         Object entity = getSession().get(entityClass, id);
         getSession().delete(entity);
         return 1;
@@ -28,7 +28,7 @@ public class BasicMapperImpl<T> extends HibernateDaoSupport implements BasicMapp
     }
 
     @SuppressWarnings("unchecked")
-    public T selectByPrimaryKey(Integer id) {
+    public T selectByPrimaryKey(Long id) {
         return (T) getSession().get(entityClass, id);
     }
 
